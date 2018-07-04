@@ -11,7 +11,7 @@ import ar.edu.unlam.tallerweb1.dao.SucursalDao;
 import ar.edu.unlam.tallerweb1.modelo.Sucursal;
 
 
-@Service ("ServicioSucursal")
+@Service ("servicioSucursal")
 @Transactional
 public class ServicioSucursalImp implements ServicioSucursal {
 	

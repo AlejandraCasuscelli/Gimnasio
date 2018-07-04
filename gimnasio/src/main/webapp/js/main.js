@@ -106,41 +106,41 @@
 
 
 
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.animate-box').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
-				
-				i++;
-
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-
-					$('body .animate-box.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn animated-fast');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated-fast');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated-fast');
-							} else {
-								el.addClass('fadeInUp animated-fast');
-							}
-
-							el.removeClass('item-animate');
-						},  k * 200, 'easeInOutExpo' );
-					});
-					
-				}, 100);
-				
-			}
-
-		} , { offset: '85%' } );
-	};
+//	var contentWayPoint = function() {
+//		var i = 0;
+//		$('.animate-box').waypoint( function( direction ) {
+//
+//			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
+//				
+//				i++;
+//
+//				$(this.element).addClass('item-animate');
+//				setTimeout(function(){
+//
+//					$('body .animate-box.item-animate').each(function(k){
+//						var el = $(this);
+//						setTimeout( function () {
+//							var effect = el.data('animate-effect');
+//							if ( effect === 'fadeIn') {
+//								el.addClass('fadeIn animated-fast');
+//							} else if ( effect === 'fadeInLeft') {
+//								el.addClass('fadeInLeft animated-fast');
+//							} else if ( effect === 'fadeInRight') {
+//								el.addClass('fadeInRight animated-fast');
+//							} else {
+//								el.addClass('fadeInUp animated-fast');
+//							}
+//
+//							el.removeClass('item-animate');
+//						},  k * 200, 'easeInOutExpo' );
+//					});
+//					
+//				}, 100);
+//				
+//			}
+//
+//		} , { offset: '85%' } );
+//	};
 
 
 	var dropdown = function() {
@@ -205,44 +205,44 @@
 		});
 	};
 
-	var counterWayPoint = function() {
-		if ($('#fh5co-counter').length > 0 ) {
-			$('#fh5co-counter').waypoint( function( direction ) {
-										
-				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-					setTimeout( counter , 400);					
-					$(this.element).addClass('animated');
-				}
-			} , { offset: '90%' } );
-		}
-	};
+//	var counterWayPoint = function() {
+//		if ($('#fh5co-counter').length > 0 ) {
+//			$('#fh5co-counter').waypoint( function( direction ) {
+//										
+//				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+//					setTimeout( counter , 400);					
+//					$(this.element).addClass('animated');
+//				}
+//			} , { offset: '90%' } );
+//		}
+//	};
 
-	var parallax = function() {
+//	var parallax = function() {
+//
+//		if ( !isMobile.any() ) {
+//			$(window).stellar({
+//				horizontalScrolling: false,
+//				hideDistantElements: false, 
+//				responsive: true
+//
+//			});
+//		}
+//	};
 
-		if ( !isMobile.any() ) {
-			$(window).stellar({
-				horizontalScrolling: false,
-				hideDistantElements: false, 
-				responsive: true
-
-			});
-		}
-	};
-
-	var testimonialCarousel = function(){
-		
-		var owl = $('.owl-carousel-fullwidth');
-		owl.owlCarousel({
-			items: 1,
-			loop: true,
-			margin: 0,
-			nav: false,
-			dots: true,
-			smartSpeed: 800,
-			autoHeight: true
-		});
-
-	};
+//	var testimonialCarousel = function(){
+//		
+//		var owl = $('.owl-carousel-fullwidth');
+//		owl.owlCarousel({
+//			items: 1,
+//			loop: true,
+//			margin: 0,
+//			nav: false,
+//			dots: true,
+//			smartSpeed: 800,
+//			autoHeight: true
+//		});
+//
+//	};
 
 	var tabs = function() {
 
@@ -308,15 +308,16 @@
 		mobileMenuOutsideClick();
 		offcanvasMenu();
 		burgerMenu();
-		contentWayPoint();
+		//contentWayPoint();
 		dropdown();
 		goToTop();
 		loaderPage();
-		counterWayPoint();
-		parallax();
-		testimonialCarousel();
+		//counterWayPoint();
+		//parallax();
+		//testimonialCarousel();
 		tabs();
 	});
 
 
 }());
+

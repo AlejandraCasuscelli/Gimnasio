@@ -69,9 +69,9 @@ public class TestServicio {
 		Socio socioMock = mock(Socio.class);
 		Usuario usuarioMock = mock(Usuario.class);
 		when(socioMock.getUsuario()).thenReturn(usuarioMock);
-		when(usuarioMock.getNick()).thenReturn("nick");
+		when(usuarioMock.getNick()).thenReturn("");
 		List<Usuario> listaUsuarioMock = mock(List.class);
-		when(usuarioDaoMock.verSiExisteUsuario("nick")).thenReturn(listaUsuarioMock);
+		when(usuarioDaoMock.verSiExisteUsuario(anyString())).thenReturn(listaUsuarioMock);
 		when(listaUsuarioMock.size()).thenReturn(1);
 		assertFalse(servicioSocio.registrarSocio(socioMock));
 		verify(socioMock, times(0)).setUsuario(usuarioMock);

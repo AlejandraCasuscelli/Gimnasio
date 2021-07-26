@@ -13,3 +13,5 @@ buildNumber.properties
 
 
 /gimnasio/src/main/resources/hibernateContext.xml
+.idea/*
+gimnasio.iml

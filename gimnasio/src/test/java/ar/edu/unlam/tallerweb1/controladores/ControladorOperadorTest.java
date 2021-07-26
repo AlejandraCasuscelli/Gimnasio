@@ -17,6 +17,7 @@ public class ControladorOperadorTest {
     private ServicioOperador servicioOperador = mock(ServicioOperador.class);
     private ServicioPago servicioPago = mock(ServicioPago.class);
     private ControladorOperador controladorOperador = new ControladorOperador(servicioOperador, servicioPago);
+    private final String REDIRECT = "redirect:/ver-pagos";
 
     private ModelAndView mav = new ModelAndView();
 
@@ -61,7 +62,7 @@ public class ControladorOperadorTest {
     }
 
     private void thenNoSePuedeAprobarUnRechazado() {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/verPagos");
+        assertThat(mav.getViewName()).isEqualTo(REDIRECT);
         assertThat(mav.getModel().get("mensaje")).isEqualTo("El pago ya se encuentra rechazado");
     }
 
@@ -104,12 +105,12 @@ public class ControladorOperadorTest {
     }
 
     private void thenElPagoSeEncuentraAprobado() {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/verPagos");
+        assertThat(mav.getViewName()).isEqualTo(REDIRECT);
     }
 
 
     private void thenObtengoUnError() {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/verPagos");
+        assertThat(mav.getViewName()).isEqualTo(REDIRECT);
         assertThat(mav.getModel().get("mensaje")).isEqualTo("Debe seleccionar una pago para aprobar");
     }
 
@@ -123,7 +124,7 @@ public class ControladorOperadorTest {
     }
 
     private void thenNoSePuedeAprobarUnAprobado() {
-        assertThat(mav.getViewName()).isEqualTo("redirect:/verPagos");
+        assertThat(mav.getViewName()).isEqualTo(REDIRECT);
         assertThat(mav.getModel().get("mensaje")).isEqualTo("El pago ya se encuentra aprobado");
     }
 

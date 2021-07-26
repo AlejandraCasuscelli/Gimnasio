@@ -56,12 +56,15 @@ public class TestDao extends SpringTest{
     @Test
     @Transactional @Rollback(true)
     public void testGuardarSocioActividadSucursal(){
-    	    	
-    	Long idSocio= 2L;
-    	Long idSucursalActividad = 5L;
-    	
-    	actividadDao.guardarSocioActividadSucursal(idSocio, idSucursalActividad);
-    	assertThat(getSession().get(Socio.class, idSocio).getActividadesEnSucursal().contains(idSucursalActividad));
+    	Socio socio = new Socio();
+    	socio.setIdSocio(2L);
+    	SucursalActividad sucursalActividad = new SucursalActividad();
+    	sucursalActividad.setIdSucursalActividad(5L);
+    	getSession().save(socio);
+    	getSession().save(sucursalActividad);
+
+    	actividadDao.guardarSocioActividadSucursal(socio.getIdSocio(), sucursalActividad.getIdSucursalActividad());
+    	assertThat(getSession().get(Socio.class, socio.getIdSocio()).getActividadesEnSucursal().contains(sucursalActividad.getIdSucursalActividad()));
     }
     
     @Test

@@ -25,19 +25,17 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 
-public class MercadoPagoTest extends SpringTest {
+public class MercadoPagoTest {
 
 
 
-    @Autowired
-    private ServicioPago servicioPago;
-
-    private ServicioEstadoPagoImpl servicioEstadoPagoImpl = mock(ServicioEstadoPagoImpl.class);
-
+//    @Autowired
+//    private ServicioPago servicioPago;
+//
+//    private ServicioEstadoPagoImpl servicioEstadoPagoImpl = mock(ServicioEstadoPagoImpl.class);
+//
 
     @Test
-    @Transactional
-    @Rollback
     public void testJsonObject() throws JsonProcessingException {
         MercadoPagoMetadata metadata = new MercadoPagoMetadata();
         metadata.setId_pase(3L);
@@ -49,8 +47,6 @@ public class MercadoPagoTest extends SpringTest {
     }
 
     @Test
-    @Transactional
-    @Rollback
     public void JsonObjectToClass() throws IOException {
         MercadoPagoMetadata mp = new MercadoPagoMetadata();
         mp.setId_pase(3L);
@@ -62,46 +58,46 @@ public class MercadoPagoTest extends SpringTest {
         assertThat(mp2.getId_pase()).isEqualTo(3L);
     }
 
-    @Test
-    @Transactional
-    @Rollback
-    public void siMercadoPagoEstaOkElPagoEstaAprobado() throws MPException {
-        Pago pago = whenElPagoEsSucces();
-        thenElPagoEstaAprobado(pago);
-    }
-
-    private void thenElPagoEstaAprobado(Pago pago) {
-        Pago pagoGuardado = getSession().get(Pago.class, pago.getId());
-        assertThat(pagoGuardado.getEstado().getNombre()).isEqualTo("Aprobado");
-    }
-
-    private Pago whenElPagoEsSucces() throws MPException {
-        EstadoPago estado = new EstadoPago();
-        estado.setId(1L);
-        estado.setNombre("Aprobado");
-        //getSession().save(estado);
-        return servicioPago.abonarPase(1L, 2L,3L, estado);
-    }
-
-    @Test
-    @Transactional
-    @Rollback
-    public void siMercadoPagoEstaPendienteElPagoEstaPendiente() throws MPException {
-        Pago pago = whenElPagoEstaPendiente();
-        thenElPagoEstaPendiente(pago);
-    }
-
-    private Pago whenElPagoEstaPendiente() {
-        EstadoPago estado = new EstadoPago();
-        estado.setId(2L);
-        estado.setNombre("Pendiente");
-        return servicioPago.abonarPase(1L, 2L,3L, estado);
-    }
-
-    private void thenElPagoEstaPendiente(Pago pago) {
-        Pago pagoGuardado = getSession().get(Pago.class, pago.getId());
-        assertThat(pagoGuardado.getEstado().getNombre()).isEqualTo("Pendiente");
-    }
+//    @Test
+//    @Transactional
+//    @Rollback
+//    public void siMercadoPagoEstaOkElPagoEstaAprobado() throws MPException {
+//        Pago pago = whenElPagoEsSucces();
+//        thenElPagoEstaAprobado(pago);
+//    }
+//
+//    private void thenElPagoEstaAprobado(Pago pago) {
+//        Pago pagoGuardado = getSession().get(Pago.class, pago.getId());
+//        assertThat(pagoGuardado.getEstado().getNombre()).isEqualTo("Aprobado");
+//    }
+//
+//    private Pago whenElPagoEsSucces() throws MPException {
+//        EstadoPago estado = new EstadoPago();
+//        estado.setId(1L);
+//        estado.setNombre("Aprobado");
+//        //getSession().save(estado);
+//        return servicioPago.abonarPase(1L, 2L,3L, estado);
+//    }
+//
+//    @Test
+//    @Transactional
+//    @Rollback
+//    public void siMercadoPagoEstaPendienteElPagoEstaPendiente() throws MPException {
+//        Pago pago = whenElPagoEstaPendiente();
+//        thenElPagoEstaPendiente(pago);
+//    }
+//
+//    private Pago whenElPagoEstaPendiente() {
+//        EstadoPago estado = new EstadoPago();
+//        estado.setId(2L);
+//        estado.setNombre("Pendiente");
+//        return servicioPago.abonarPase(1L, 2L,3L, estado);
+//    }
+//
+//    private void thenElPagoEstaPendiente(Pago pago) {
+//        Pago pagoGuardado = getSession().get(Pago.class, pago.getId());
+//        assertThat(pagoGuardado.getEstado().getNombre()).isEqualTo("Pendiente");
+//    }
 
 
 }
